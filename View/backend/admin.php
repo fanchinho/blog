@@ -22,4 +22,4 @@ $title = 'Bienvenue sur le blog de Michel Smith'; ?>
         </div>
     </div><!-- .container -->
 <?php $content = ob_get_clean();
-require('view/frontend/template.php'); ?>
+require('view/include/template.php'); ?>

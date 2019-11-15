@@ -28,7 +28,6 @@ Auteur : <?php echo $comment['author'] ?>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
-
+<?php require('view/include/template.php'); ?>
 
 <p><a href="index.php?action=post&id=<?php echo $post['id'] ?>">Retour à l'article</a></p>

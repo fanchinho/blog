@@ -55,4 +55,4 @@
     </div><!-- .container -->
 </div>
 <?php $content = ob_get_clean();
-require('view/frontend/template.php'); ?>
+require('view/include/template.php'); ?>
