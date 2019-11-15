@@ -75,7 +75,7 @@
 
                         <ul class="flex-lg flex-lg-row justify-content-lg-center align-content-lg-center">
                             <li class="current-menu-item"><a href="index.php">Home</a></li>
-                            <li><a href="index.php?action=about">about me</a></li>
+                            <li><a href="index.php?action=about">à propos</a></li>
                             <li><a href="index.php?action=contact">Contact</a></li>
                             <?php 
                                 
