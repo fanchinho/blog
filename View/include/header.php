@@ -31,11 +31,11 @@
                 <div class="row">
                     <div class="col-lg-6 flex align-items-center">
                         <div class="header-bar-text d-none d-lg-block">
-                            <p>Bonjour, mon nom est Michel</p>
+                            <p>Bonjour, mon nom est Jean</p>
                         </div><!-- .header-bar-text -->
 
                         <div class="header-bar-email d-none d-lg-block">
-                            <a href="#">Contactme@michel-smith.com</a>
+                            <a href="mailto:contactme@jean-forteroche.com">contactme@jean-forteroche.com</a>
                         </div><!-- .header-bar-email -->
                     </div><!-- .col -->
 
@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="site-branding flex flex-column align-items-center">
-                        <h1 class="site-title"><a href="index.php" rel="home">Michel Smith</a></h1>
+                        <h1 class="site-title"><a href="index.php" rel="home">Jean Forteroche</a></h1>
                     </div><!-- .site-branding -->
 
                     <nav class="site-navigation">

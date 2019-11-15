@@ -1,9 +1,9 @@
 <div class="col-12 col-lg-3">
     <div class="sidebar">
         <div class="about-me">
-            <h2>Je suis Michel Smith</h2>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat. Proin nec interdum sem. Quisque in porttitor magna.</p>
+            <h2>Je suis Jean Forteroche</h2>
+            <p>Ecrivain et réalisateur, je travaille actuellement sur mon prochain roman, "Billet simple pour l'Alaska". <br><br>
+            Je souhaite partager avec vous mon expérience en partageant cette expérience, épisode par épisode, billet par billet.</p>
         </div><!-- .about-me -->
 
         <div class="recent-posts">
