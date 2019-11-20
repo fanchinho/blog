@@ -785,7 +785,7 @@ a:hover, a:active {
     display: block;
     min-width: 200px;
     padding: 20px;
-    margin-top: 70px;
+    margin: 40px auto 20px auto;
     border: 0;
     font-size: 14px;
     color: #fff;
