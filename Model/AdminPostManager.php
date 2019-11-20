@@ -12,11 +12,11 @@ class AdminPostManager extends Manager
         $post = $db->prepare('INSERT INTO post(title, content, image, date) VALUES(?, ?, ?, NOW())');
         
         $affectedPost = $post->execute(array($title, $content, $filename));
-        
-        return $affectedPost;
-       // echo 'The ID is: '.$db->lastInsertId();
-        
-        
+                
+        $newIdPost = $db->lastInsertId();
+
+        return $newIdPost;
+
         // Je dois récupérer l'id du post que je viens de créer pour l'intégrer dans la BDD de tags
         
         // Je dois faire pareil avec les tags créé ?

@@ -64,6 +64,9 @@ function post()
     
     $post = $postManager->getPost($_GET['id']);
     
+    //récupération des id des tags
+    $tagsPost = $tagManager->TagsbyPost($_GET['id']);
+
     //récupération des tags
     $tagsPost = $tagManager->TagsbyPost($_GET['id']);
     

@@ -89,15 +89,17 @@ function addPost () {
     if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {  
         
         if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_FILES["photo"])) 
-        {   
-            if (!empty($_POST['tags'])) {
-                addTags($_POST['tags']);
-            }
-            
+        {               
             $filename = uploadPhoto($_FILES["photo"]);
             $postManager = new AdminPostManager();
 
+            //création du post et récupération de l'id du post
             $affectedPost = $postManager->addPost($_POST['title'], $_POST['content'], $filename);
+
+            //fonction pour la création du tags
+            if (!empty($_POST['tags'])) {
+                addTags($affectedPost, $_POST['tags']);
+            }
             
             header("Location: index.php?action=admin");
         }
@@ -111,17 +113,32 @@ function addPost () {
     }
 }
 
-function addTags ($tags) {
+function addTags ($affectedPost, $tags) {
+
     $a = explode(',', $tags);
-        
+
     foreach($a as $v) {
         $tagManager = new TagManager();
-        $AddTag = $tagManager->TagCreate($v);
+        $CompareTag = $tagManager->TagCompare($v);
+         if($CompareTag == false) {
+            $affectedTag = $tagManager->TagCreate($v);
+            TagsBase($affectedPost, $affectedTag);
+        }
+        else {
+            $IdTag = $CompareTag['id'];
+            TagsBase($affectedPost, $IdTag);
+        }
     }
 }
 
+function TagsBase ($post, $tag) {
+    $tagManager = new TagManager();
+    $tagAssociate = $tagManager->TagAssociate($post, $tag);
+
+}
+
 function linkTags () {
-        $tagManager = new TagManager();
+    $tagManager = new TagManager();
 }
 
 //Suppression d'un article
