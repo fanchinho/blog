@@ -107,7 +107,7 @@
                             </li><!-- .comment -->
 
                             <?php
-                                                                    }
+                                }
 
                                 }
                                 $comments->closeCursor();
@@ -136,121 +136,50 @@
     <div class="outer-container">
         <div class="container-fluid">
             <div class="row footer-recent-posts">
-                <div class="col-12 col-md-6 col-xl-3">
+                <?php
+                    while ($last = $lastPosts->fetch())
+                    {
+                ?>         
+                <div class="col-12 col-md-6 col-xl-3"<?php if($last['id'] == ($_GET['id'])) { ?>
+                    echo style="display:none;"
+                    <?php } ?>>
                     <div class="footer-post-wrap flex justify-content-between">
                         <figure>
-                            <a href="#"><img src="public/images/foot-1.jpg" alt=""></a>
+                        <img src="Public/images/upload/<?= htmlspecialchars($last['image']) ?>" alt="<?= htmlspecialchars($last['title']) ?>">
                         </figure>
 
                         <div class="footer-post-cont flex flex-column justify-content-between">
                             <header class="entry-header">
                                 <div class="posted-date">
-                                    January 30, 2018
+                                    <?= $last['date_creation'];?>
                                 </div><!-- .entry-header -->
 
-                                <h3><a href="#">My fall in love story</a></h3>
+                                <h3><a href="index.php?action=post&id=<?= $last['id'];?>"><?= $last['title'];?></a></h3>
 
                                 <div class="tags-links">
-                                    <a href="#">#winter</a>
-                                    <a href="#">#love</a>
-                                    <a href="#">#snow</a>
-                                    <a href="#">#january</a>
+                                    <?php $tagsPost = $tagManager->TagsbyPost($last['id']);
+                                        while ($dataTag = $tagsPost->fetch())
+                                        {
+                                        ?>
+                                        <a href="index.php?action=tag&id=<?= $dataTag['id'] ?>">#<?= $dataTag['tag_name'] ?></a>
+                                        <?php
+                                        }
+                                        $tagsPost->closeCursor();
+                                    ?>
                                 </div><!-- .tags-links -->
                             </header><!-- .entry-header -->
 
                             <footer class="entry-footer">
-                                <a class="read-more" href="#">read more</a>
+                                <a class="read-more" href="index.php?action=post&id=<?= $last['id'];?>">Lire l'article</a>
                             </footer><!-- .entry-footer -->
                         </div><!-- .footer-post-cont -->
                     </div><!-- .footer-post-wrap -->
                 </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-xl-3">
-                    <div class="footer-post-wrap flex justify-content-between">
-                        <figure>
-                            <a href="#"><img src="public/images/foot-2.jpg" alt=""></a>
-                        </figure>
-
-                        <div class="footer-post-cont flex flex-column justify-content-between">
-                            <header class="entry-header">
-                                <div class="posted-date">
-                                    January 30, 2018
-                                </div><!-- .entry-header -->
-
-                                <h3><a href="#">Man’s best friend</a></h3>
-
-                                <div class="tags-links">
-                                    <a href="#">#winter</a>
-                                    <a href="#">#love</a>
-                                    <a href="#">#snow</a>
-                                    <a href="#">#january</a>
-                                </div><!-- .tags-links -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer">
-                                <a class="read-more" href="#">read more</a>
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .footer-post-cont -->
-                    </div><!-- .footer-post-wrap -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-xl-3">
-                    <div class="footer-post-wrap flex justify-content-between">
-                        <figure>
-                            <a href="#"><img src="public/images/foot-3.jpg" alt=""></a>
-                        </figure>
-
-                        <div class="footer-post-cont flex flex-column justify-content-between">
-                            <header class="entry-header">
-                                <div class="posted-date">
-                                    January 30, 2018
-                                </div><!-- .entry-header -->
-
-                                <h3><a href="#">Writing on a budget</a></h3>
-
-                                <div class="tags-links">
-                                    <a href="#">#winter</a>
-                                    <a href="#">#love</a>
-                                    <a href="#">#snow</a>
-                                    <a href="#">#january</a>
-                                </div><!-- .tags-links -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer">
-                                <a class="read-more" href="#">read more</a>
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .footer-post-cont -->
-                    </div><!-- .footer-post-wrap -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-xl-3">
-                    <div class="footer-post-wrap flex justify-content-between">
-                        <figure>
-                            <a href="#"><img src="public/images/foot-4.jpg" alt=""></a>
-                        </figure>
-
-                        <div class="footer-post-cont flex flex-column justify-content-between">
-                            <header class="entry-header">
-                                <div class="posted-date">
-                                    January 30, 2018
-                                </div><!-- .entry-header -->
-
-                                <h3><a href="#">My fall in love story</a></h3>
-
-                                <div class="tags-links">
-                                    <a href="#">#winter</a>
-                                    <a href="#">#love</a>
-                                    <a href="#">#snow</a>
-                                    <a href="#">#january</a>
-                                </div><!-- .tags-links -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer">
-                                <a class="read-more" href="#">read more</a>
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .footer-post-cont -->
-                    </div><!-- .footer-post-wrap -->
-                </div><!-- .col -->
+                <?php
+                    }
+                    $lastPosts->closeCursor();
+                ?>
+        
             </div><!-- .row -->
         </div><!-- .container-fluid -->
     </div><!-- .outer-container -->
