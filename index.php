@@ -7,12 +7,12 @@ try {
         $action = $_GET['action'];
         switch ($action) {
             //HOMEPAGE
-            case 'p' : paginationTest(); 
+            case 'p' : homepage(); 
             break;
             //AFFICHAGE PAR TAGS
             case 'tag' : 
                 if(isset($_GET['id']) && $_GET['id'] > 0) {
-                    paginationTest(); 
+                    listPostByTag($_GET['id']); 
                 }
             break;
             //PAGE ARTICLE

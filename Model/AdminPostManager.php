@@ -16,14 +16,7 @@ class AdminPostManager extends Manager
         $newIdPost = $db->lastInsertId();
 
         return $newIdPost;
-
-        // Je dois récupérer l'id du post que je viens de créer pour l'intégrer dans la BDD de tags
-        
-        // Je dois faire pareil avec les tags créé ?
-        
-        //faire un traitement pour ne pas rajouter des tags exisantats >> si il existe on récupère l'id et on l'associe a l'id du post
     }
-    
     
     
     public function GetPostToAdmin ($postId)
@@ -39,7 +32,9 @@ class AdminPostManager extends Manager
 
     }
     
-    public function changePost ($postId, $title, $content, $image)
+    
+
+    public function changeCompletePost ($postId, $title, $content, $image)
     {
         $db = $this->dbConnect();
         $post = $db->prepare('UPDATE post SET title = :newTitle, content = :newContent, image = :newImage WHERE id = :postId');
@@ -53,7 +48,21 @@ class AdminPostManager extends Manager
         return $newPost;
 
     }
+    public function changePost ($postId, $title, $content)
+    {
+        $db = $this->dbConnect();
+        $post = $db->prepare('UPDATE post SET title = :newTitle, content = :newContent WHERE id = :postId');
+        $newPost = $post->execute(array(
+            'postId' => $postId,
+            'newTitle' => $title,
+            'newContent' => $content,
+            ));
+        
+        return $newPost;
+
+    }
     
+
     public function deletePost ($postId)
     {
         $db = $this->dbConnect();

@@ -17,8 +17,19 @@
                                 <input type="file" name="photo" id="fileUpload"><br><br>
                                 <label for="title" class="bold black">Titre de l'article</label>
                                 <input type="text" id="title" name="title" placeholder="<?= $post['title'] ?>" value="<?= $post['title'] ?>">
+                                <br><br>Tags de l'article : <?php 
+                                while ($dataTag = $tags->fetch())
+                                {
+                                ?>
+                                <a href="#">#<?= $dataTag['tag_name'] ?></a>
+                                <?php
+                                }
+                                $tags->closeCursor();
+                                ?>
+                                <br>
+                                <label for="tags">Ajouter des Tags (séparez par une virgule)</label>
+                                <input type="text" id="tags" name="tags">
                                 <label for="content" class="bold black"><br>Contenu de l'article</label>
-
                                 <textarea name="content" height="300px" class="post-content"><?= $post['content'] ?></textarea>
                                 <input type="submit" value="Valider">
                                 <a href="index.php?action=admin" class="link-post">Annuler</a>

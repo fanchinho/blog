@@ -25,7 +25,7 @@ function homepage ()
     $limitPost = 5;
     $currentPage = 1;
     $nbrePage = ceil($nbrPost/$limitPost);
-    
+
     if (isset($_GET['p']) && ($_GET['p']) < $nbrePage){
         $currentPage = $_GET['p'];
     }
@@ -33,6 +33,29 @@ function homepage ()
     $post = $postManager->getPosts($currentPage, $limitPost);
     
     require('view/frontend/home.php');
+}
+function listPostByTag ($idTag)
+{
+    $commentManager = new CommentManager();
+    $tagManager = new TagManager();
+        
+    //Récupération des tags sur les côtés
+    $tagSide = $tagManager->getTags();
+    
+    //PAGINATION 
+    $countPost = $tagManager->numberPostsByTag($idTag);
+    $nbrPost = $countPost['NbrPost'];
+    
+    $limitPost = 5;
+    $currentPage = 1;
+    $nbrePage = ceil($nbrPost/$limitPost);
+
+    if (isset($_GET['p']) && ($_GET['p']) < $nbrePage){
+        $currentPage = $_GET['p'];
+    }
+    
+    $post = $tagManager->getPostsByTag($currentPage, $limitPost, $idTag);
+    require('view/frontend/PostsByTag.php');
 }
 
 function about ()

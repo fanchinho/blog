@@ -118,7 +118,7 @@ ob_start(); ?>
                     }
                     $post->closeCursor();
                 ?>
-                
+
                 <div class="pagination">
                     <ul class="flex align-items-center">
                         <?php for($i=1; $i<$nbrePage; $i++) { ?>
@@ -133,6 +133,7 @@ ob_start(); ?>
                         <?php } ?>
                     </ul>
                 </div>
+                
             </div><!-- .col -->
             
             <?php require('view/include/sidebar.php'); ?>
