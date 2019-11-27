@@ -160,10 +160,12 @@ function advertDelete ($postId) {
 function delete ($postId) {
     $postToDeleteManager = new AdminPostManager();
     $CommentToDeleteManager = new AdminCommentManager();
+    $TagAssociateManager = new TagManager();
 
+    $deleteAssociate = $TagAssociateManager -> deleteTagAssociate($postId);
     $deletePost = $postToDeleteManager -> deletePost($postId);
     $deleteComments = $CommentToDeleteManager -> deleteCommentWithPost($postId);
-    
+
     return true;
 }
 
@@ -171,18 +173,39 @@ function delete ($postId) {
 function change ($postId) {
     if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
         $postToDeleteManager = new AdminPostManager();
-        $post = $postToDeleteManager -> GetPostToAdmin($postId);
+        $tagToChangeManager = new TagManager();
 
+        $post = $postToDeleteManager -> GetPostToAdmin($postId);
+        $tags = $tagToChangeManager -> TagsbyPost($postId);
         require('view/backend/changePost.php');  
     }
     else {
         header("Location: index.php?action=admin");
     }
 }
-function changePost ($postId, $title, $content, $image) {
+function changePost ($postId, $title, $content) {
     if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
         $postToChangeManager = new AdminPostManager();
-        $post = $postToChangeManager -> changePost($postId, $title, $content, $image);
+        $post = $postToChangeManager -> changePost($postId, $title, $content);
+        //fonction pour la création du tags
+        if (!empty($_POST['tags'])) {
+            addTags($postId, $_POST['tags']);
+        }
+        return true;
+    }
+    else {
+        header("Location: index.php?action=admin");
+    }
+}
+function changeCompletePost ($postId, $title, $content, $image) {
+    if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
+        $postToChangeManager = new AdminPostManager();
+        $post = $postToChangeManager -> changeCompletePost($postId, $title, $content, $image);
+
+        //fonction pour la création du tags
+        if (!empty($_POST['tags'])) {
+            addTags($postId, $_POST['tags']);
+        }
 
         return true;
     }
@@ -190,7 +213,6 @@ function changePost ($postId, $title, $content, $image) {
         header("Location: index.php?action=admin");
     }
 }
-
 //Modération des commentaires
 function commentsByPost($postId) {
     $postToAdmin = new AdminPostManager();
@@ -241,9 +263,13 @@ function uploadPhoto($Name) {
                 echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
             }
         } else {
-
+            return false;
             echo "Error: " . $Name["error"];
 
         }
     return $filename;
+}
+
+function pageError ($message) {
+    require('view/frontend/error.php');
 }

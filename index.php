@@ -6,8 +6,16 @@ try {
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
         switch ($action) {
-            case 'p' : homepage(); break;
-
+            //HOMEPAGE
+            case 'p' : paginationTest(); 
+            break;
+            //AFFICHAGE PAR TAGS
+            case 'tag' : 
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+                    paginationTest(); 
+                }
+            break;
+            //PAGE ARTICLE
             case 'post' : 
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     post();
@@ -16,7 +24,7 @@ try {
                     throw new Exception('Aucun identifiant de billet envoyé');
                 }
             break;
-
+            //COMMENTAIRES
             case 'addComment' :
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['message'])) {
@@ -51,7 +59,7 @@ try {
             case 'updateComment' :
                 updateComment($_GET['id'],$_GET['idComment'], $_POST['author'], $_POST['comment']);
             break;
-
+            //PAGE CONTACT
             case 'contact' :
                 contact();
             break;
@@ -59,11 +67,6 @@ try {
             case 'contactPost' :
                 contactForm();
             break;
-
-            case 'blog' :
-                blog();
-            break;
-
             case 'about' :
                 about();
             break;
@@ -184,13 +187,16 @@ try {
             break;
             case 'changePost' : 
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
-                                
-                    $filename = uploadPhoto($_FILES["photo"]);
-                    
-                        if (changePost($_GET['id'], $_POST['title'], $_POST['content'], $filename) == true) {
-                            adminHome();
+                        if (uploadPhoto($_FILES["photo"]) == false) {
+                            if (changePost($_GET['id'], $_POST['title'], $_POST['content']) == true) {
+                                header("Location: index.php?action=admin");
+                            }
+                        } else {
+                            $filename = uploadPhoto($_FILES["photo"]);
+                            if (changeCompletePost($_GET['id'], $_POST['title'], $_POST['content'], $filename ) == true) {
+                                header("Location: index.php?action=admin");
+                            }
                         }
-                        
                     }
                 else {
                     throw new Exception('problême de données');
@@ -251,5 +257,6 @@ try {
 }
 
 catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
+    $messageError = 'il y a une erreur : ' . $e->getMessage();
+    pageError($messageError);
 }
