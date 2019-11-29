@@ -21,15 +21,17 @@ function homepage ()
     //PAGINATION 
     $countPost = $postManager->numberPosts();
     $nbrPost = $countPost['NbrPost'];
-    
     $limitPost = 5;
-    $currentPage = 1;
+   
     $nbrePage = ceil($nbrPost/$limitPost);
 
     if (isset($_GET['p']) && ($_GET['p']) < $nbrePage){
         $currentPage = $_GET['p'];
     }
-    
+    else {
+        $currentPage = 1;
+    }
+    var_dump($currentPage);
     $post = $postManager->getPosts($currentPage, $limitPost);
     
     require('view/frontend/home.php');
@@ -98,6 +100,9 @@ function post()
     
     //récupération des commentaires de l'article
     $comments = $commentManager->getComments($_GET['id']);
+
+    //récupération des derniers articles
+    $lastPosts = $postManager -> lastPosts();
     
     require('view/frontend/post.php');
 }

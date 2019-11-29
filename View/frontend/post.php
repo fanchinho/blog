@@ -143,7 +143,7 @@
                 <div class="col-12 col-md-6 col-xl-3"<?php if($last['id'] == ($_GET['id'])) { ?>
                     echo style="display:none;"
                     <?php } ?>>
-                    <div class="footer-post-wrap flex justify-content-between">
+                    <div class="footer-post-wrap flex flex-column justify-content-between">
                         <figure>
                         <img src="Public/images/upload/<?= htmlspecialchars($last['image']) ?>" alt="<?= htmlspecialchars($last['title']) ?>">
                         </figure>
