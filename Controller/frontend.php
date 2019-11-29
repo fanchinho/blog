@@ -20,19 +20,10 @@ function homepage ()
     
     //PAGINATION 
     $countPost = $postManager->numberPosts();
-    $nbrPost = $countPost['NbrPost'];
-    $limitPost = 5;
-   
-    $nbrePage = ceil($nbrPost/$limitPost);
+    
+    $paginationInfo = pagination($countPost);
 
-    if (isset($_GET['p']) && ($_GET['p']) < $nbrePage){
-        $currentPage = $_GET['p'];
-    }
-    else {
-        $currentPage = 1;
-    }
-    var_dump($currentPage);
-    $post = $postManager->getPosts($currentPage, $limitPost);
+    $post = $postManager->getPosts($paginationInfo['0'], $paginationInfo['1']);
     
     require('view/frontend/home.php');
 }
@@ -46,18 +37,28 @@ function listPostByTag ($idTag)
     
     //PAGINATION 
     $countPost = $tagManager->numberPostsByTag($idTag);
+
+    $paginationInfo = pagination($countPost);
+
+    $post = $tagManager->getPostsByTag($paginationInfo['0'], $paginationInfo['1'], $idTag);
+
+    require('view/frontend/PostsByTag.php');
+}
+
+function pagination ($countPost) {
     $nbrPost = $countPost['NbrPost'];
-    
     $limitPost = 5;
-    $currentPage = 1;
+
     $nbrePage = ceil($nbrPost/$limitPost);
 
-    if (isset($_GET['p']) && ($_GET['p']) < $nbrePage){
+    if (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $nbrePage){
         $currentPage = $_GET['p'];
     }
-    
-    $post = $tagManager->getPostsByTag($currentPage, $limitPost, $idTag);
-    require('view/frontend/PostsByTag.php');
+    else {
+        $currentPage = 1;
+    }
+
+    return array($currentPage, $limitPost, $nbrePage);
 }
 
 function about ()

@@ -121,7 +121,7 @@ ob_start(); ?>
                 
                 <div class="pagination">
                     <ul class="flex align-items-center">
-                        <?php for($i=1; $i<$nbrePage; $i++) { ?>
+                        <?php for($i=1; $i<=$paginationInfo['2']; $i++) { ?>
                            
                             <li class="<?php if(!isset($_GET['p'])) {
                                 if ($i==1){

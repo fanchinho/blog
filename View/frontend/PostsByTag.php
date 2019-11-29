@@ -121,14 +121,14 @@ ob_start(); ?>
 
                 <div class="pagination">
                     <ul class="flex align-items-center">
-                        <?php for($i=1; $i<$nbrePage; $i++) { ?>
+                        <?php for($i=1; $i<=$paginationInfo['2']; $i++) { ?>
                            
                             <li class="<?php if(!isset($_GET['p'])) {
                                 if ($i==1){
                                     echo"active";
                                     }
                             } else if(isset($_GET['p']) && ($_GET['p']) > 0 && ($_GET['p']) == $i){ 
-                                echo "active";} ?>"><a href="index.php?p=<?= $i ?>"><?= $i ?>.</a></li>
+                                echo "active";} ?>"><a href="index.php?action=tag&id=<?= $_GET['id'] ?>&p=<?= $i ?>"><?= $i ?>.</a></li>
                             
                         <?php } ?>
                     </ul>
