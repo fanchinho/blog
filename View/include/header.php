@@ -48,11 +48,11 @@
                             </ul>
                         </div><!-- .header-bar-social -->
 
-                        <div class="header-bar-search d-none d-md-block">
+                        <!--<div class="header-bar-search d-none d-md-block">
                             <form>
                                 <input type="search" placeholder="Rechercher">
                             </form>
-                        </div><!-- .header-bar-search -->
+                        </div> .header-bar-search -->
                     </div><!-- .col -->
                 </div><!-- .row -->
             </div><!-- .container-fluid -->
@@ -77,30 +77,13 @@
                             <li class="current-menu-item"><a href="index.php">Home</a></li>
                             <li><a href="index.php?action=about">à propos</a></li>
                             <li><a href="index.php?action=contact">Contact</a></li>
-                            <?php 
+                            <!--<?php 
                                 
                                 if(isset($_SESSION['status']) && ($_SESSION['status'] == 'connected')) {
                                     echo ('<li><a href="index.php?action=admin">Administration</a></li>');
                                 }
-                            ?>
+                            ?>-->
                         </ul>
-
-                        <div class="header-bar-social d-md-none">
-                            <ul class="flex justify-content-center align-items-center">
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div><!-- .header-bar-social -->
-
-                        <div class="header-bar-search d-md-none">
-                            <form>
-                                <input type="search" placeholder="Rechercher">
-                            </form>
-                        </div><!-- .header-bar-search -->
                     </nav><!-- .site-navigation -->
                 </div><!-- .col -->
             </div><!-- .row -->

@@ -115,6 +115,8 @@ function addComment($postId, $author, $mail, $content)
 
     $affectedLines = $commentManager->postComment($postId, $mail, $author, $content);
 
+    header("Location: index.php?action=post&id=".$postId);
+
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
@@ -122,5 +124,19 @@ function addComment($postId, $author, $mail, $content)
         return true;
     }
 }
+function signalComment($idComment)
+{
+    $commentManager = new CommentManager();
 
+    $comment = $commentManager->CommentToSIgnal($idComment);
 
+    require('view/frontend/commentSignal.php');
+}
+function signalBack($idComment)
+{
+    $commentManager = new CommentManager();
+
+    $comment = $commentManager->signalBack($idComment);
+
+    header("Location: index.php");
+}

@@ -24,7 +24,44 @@ try {
                     throw new Exception('Aucun identifiant de billet envoyé');
                 }
             break;
-            //COMMENTAIRES
+            // COMMENTAIRES
+            // Signalement des commentaires front
+            case 'signalComment' : 
+                if (isset($_GET['idComment']) && $_GET['idComment'] > 0) {
+                    signalComment($_GET['idComment']);
+                }
+                else {
+                    throw new Exception('Le commentaire est introuvable ! ');
+                }
+            break;
+            case 'signal' : 
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    signalBack($_GET['id']);
+                }
+                else {
+                    throw new Exception('Le commentaire est introuvable ! ');
+                }
+            break;
+            // Signalement des commentaires back
+            case 'deleteComment' : 
+                if (isset($_GET['idComment']) && $_GET['idComment'] > 0) {
+                    deleteComment($_GET['id'], $_GET['idComment']);
+        
+                }
+                else {
+                    throw new Exception('Le commentaire est introuvable ! ');
+                }
+            break;
+            case 'ignoreSignal' : 
+                if (isset($_GET['idComment']) && $_GET['idComment'] > 0) {
+                    ignoreSignal($_GET['id'], $_GET['idComment']);
+        
+                }
+                else {
+                    throw new Exception('Le commentaire est introuvable ! ');
+                }
+            break;
+            // Ajout d'un commentaires
             case 'addComment' :
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['message'])) {
@@ -42,7 +79,7 @@ try {
                 }
             break;
 
-            case 'comment' :
+            /*case 'comment' :
                 if (isset($_GET['id']) && isset($_POST['idComment'])) {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         comment();
@@ -58,7 +95,7 @@ try {
 
             case 'updateComment' :
                 updateComment($_GET['id'],$_GET['idComment'], $_POST['author'], $_POST['comment']);
-            break;
+            break;*/
             //PAGE CONTACT
             case 'contact' :
                 contact();
@@ -248,8 +285,15 @@ try {
             case 'deconnexion' : 
                 adminDeconnexion();
             break;
+            
+            default:
+            $messageError = 'page non reconnu';
+            pageError($messageError);
+
+            break;
 
             }
+
     }
     else {
         homepage();

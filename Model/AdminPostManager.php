@@ -29,9 +29,7 @@ class AdminPostManager extends Manager
         $post = $req->fetch();
 
         return $post;
-
     }
-    
     
 
     public function changeCompletePost ($postId, $title, $content, $image)

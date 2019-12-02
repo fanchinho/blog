@@ -92,17 +92,17 @@
                                     <div class="comment-wrap">
                                         <div class="comment-author flex flex-wrap align-items-center">
                                             <span class="author_comment fn">
-                                                <?= $comment['author'] ?>  
+                                                <?= htmlspecialchars($comment['author']) ?>  
                                             </span><!-- .fn -->
 
                                             <span class="comment-meta"> le <?= $comment['comment_date'] ?>
                                             </span><!-- .comment-meta -->
-
                                         </div><!-- .comment-author -->
                                         <p>
-                                        <?= $comment['content']?>
+                                        <?= htmlspecialchars($comment['content'])?>
                                         </p>
                                     </div><!-- .comment-wrap -->
+                                    <a href="index.php?action=signalComment&idComment=<?=$comment['id']?>&id=<?= $_GET['id'] ?>">Signaler</a>
                                 </div><!-- .comment-body -->
                             </li><!-- .comment -->
 

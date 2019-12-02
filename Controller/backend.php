@@ -215,27 +215,64 @@ function changeCompletePost ($postId, $title, $content, $image) {
 }
 //Modération des commentaires
 function commentsByPost($postId) {
+    if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
     $postToAdmin = new AdminPostManager();
     $commentsToAdmin = new AdminCommentManager();
 
     $post = $postToAdmin -> GetPostToAdmin($postId);    
     $comments = $commentsToAdmin -> getComments($postId);
     
-    require('view/backend/commentsPost.php');    
+    require('view/backend/commentsPost.php');  
+    }
+    else {
+        header("Location: index.php?action=admin");
+    } 
 }
 function commentOnLine ($commentId) {
+    if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
     $commentOnLine = new AdminCommentManager();
     $commentStatus = $commentOnLine -> onlineComment($commentId);
     
     return true;
+    }
+    else {
+        header("Location: index.php?action=admin");
+    }
 }
 function commentOffLine ($commentId) {
+    if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
     $commentOffLine = new AdminCommentManager();
     $commentStatus = $commentOffLine -> offlineComment($commentId);
     
     return true;
+    }
+    else {
+        header("Location: index.php?action=admin");
+    }
+}
+function deleteComment ($idPost , $idComment) {
+    if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
+    $deleteComment = new AdminCommentManager();
+    $deleteCommentOk = $deleteComment -> deleteComment($idComment);
+
+    header("Location: index.php?action=adminComments&id=".$idPost);
+    }
+    else {
+        header("Location: index.php?action=admin");
+    }
 }
 
+function ignoreSignal ($idPost , $idComment) {
+    if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
+    $deleteComment = new AdminCommentManager();
+    $deleteCommentOk = $deleteComment -> ignoreComment($idComment);
+
+    header("Location: index.php?action=adminComments&id=".$idPost);
+    }
+    else {
+        header("Location: index.php?action=admin");
+    }
+}
 function uploadPhoto($Name) {
     if(isset($Name) && $Name["error"] == 0){
             $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "JPG" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
