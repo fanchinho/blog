@@ -120,9 +120,9 @@
                             <h3 class="comment-reply-title">Laissez un commentaire</h3>
 
                             <form  action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post" class="comment-form">
-                                <input type="text" placeholder="Pseudo" id="pseudo" name="pseudo">
-                                <input type="email" placeholder="Email" id="email" name="email">
-                                <textarea rows="18" cols="6" placeholder="Message" id="message" name="message"></textarea>
+                                <input type="text" placeholder="Pseudo" id="pseudo" name="pseudo" required> 
+                                <input type="email" placeholder="Email" id="email" name="email" required>
+                                <textarea rows="18" cols="6" placeholder="Message" id="message" name="message" required></textarea>
                                 <input type="submit" value="Envoyer mon commentaire">
                             </form><!-- .comment-form -->
                         </div><!-- .comment-respond -->
