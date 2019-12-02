@@ -26,13 +26,7 @@
                     <div class="entry-content">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat. Proin nec interdum sem. Quisque in porttitor magna, a imperdiet est. Donec accumsan justo nulla, sit amet varius urna laoreet vitae. Maecenas feugiat fringilla metus. Nullam semper ornare quam eu sagittis. Curabitur ornare sem eu dapibus rutrum. Sed lobortis eros ut sapien lobortis, euismod dignissim odio interdum. Integer finibus molestie tellus sit amet egestas. Aliquam ullamcorper magna in ipsum sollicitudin imperdiet consectetur vitae nunc. Maecenas vel erat et erat lobortis porttitor ac id diam. </p>
                     </div><!-- .entry-content -->
-
-                    <form class="contact-form" method="post" action="index.php?action=contactPost" >
-                        <input type="text" placeholder="Votre nom" id="name" name="name">
-                        <input type="email" placeholder="Votre email" id="email" name="email">
-                        <textarea rows="18" cols="6" placeholder="Messages" name="message" id="message"></textarea>
-                        <input type="submit" value="Read More">
-                    </form><!-- .contact-form -->
+                    
                 </div><!-- .content-wrap -->
             </div><!-- .col -->
 

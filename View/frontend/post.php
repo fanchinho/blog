@@ -92,17 +92,17 @@
                                     <div class="comment-wrap">
                                         <div class="comment-author flex flex-wrap align-items-center">
                                             <span class="author_comment fn">
-                                                <?= $comment['author'] ?>  
+                                                <?= htmlspecialchars($comment['author']) ?>  
                                             </span><!-- .fn -->
 
                                             <span class="comment-meta"> le <?= $comment['comment_date'] ?>
                                             </span><!-- .comment-meta -->
-
                                         </div><!-- .comment-author -->
                                         <p>
-                                        <?= $comment['content']?>
+                                        <?= htmlspecialchars($comment['content'])?>
                                         </p>
                                     </div><!-- .comment-wrap -->
+                                    <a href="index.php?action=signalComment&idComment=<?=$comment['id']?>&id=<?= $_GET['id'] ?>">Signaler</a>
                                 </div><!-- .comment-body -->
                             </li><!-- .comment -->
 
@@ -120,9 +120,10 @@
                             <h3 class="comment-reply-title">Laissez un commentaire</h3>
 
                             <form  action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post" class="comment-form">
-                                <input type="text" placeholder="Pseudo" id="pseudo" name="pseudo">
-                                <input type="email" placeholder="Email" id="email" name="email">
-                                <textarea rows="18" cols="6" placeholder="Message" id="message" name="message"></textarea>
+                                <input type="text" placeholder="Pseudo" id="pseudo" name="pseudo" required> 
+                                <input type="email" placeholder="Email" id="email" name="email" required>
+                                <textarea rows="18" cols="6" placeholder="Message" id="message" name="message" required
+                                ></textarea>
                                 <input type="submit" value="Envoyer mon commentaire">
                             </form><!-- .comment-form -->
                         </div><!-- .comment-respond -->

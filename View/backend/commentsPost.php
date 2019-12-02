@@ -30,9 +30,15 @@
                                 en attente de modération / <a href="index.php?action=CommentOnline&amp;id=<?= $post['id']?>&amp;idComment=<?= $comment['id']?>">Valider</a>;
                         <?php }
                             else if ($comment['status']==1) { ?>
-                                Visible en ligne / <a href="index.php?action=CommentOffline&amp;id=<?= $post['id']?>&amp;idComment=<?= $comment['id']?>">Désactiver</a>;
-                                 <?php } ?>
-                                        
+                                <b>Visible en ligne</b><br> <a href="index.php?action=CommentOffline&amp;id=<?= $post['id']?>&amp;idComment=<?= $comment['id']?>" class="link-post">Désactiver</a> <a href="index.php?action=deleteComment&amp;id=<?= $post['id']?>&amp;idComment=<?= $comment['id']?>" class="link-post">supprimer</a>
+                                 <?php } 
+                        if($comment['moderate']==1) {?>
+                            <p>
+                            <br>
+                            <span style="color:red;">Ce commentaire a été signalé !</span><br>
+                            Vous pouvez le <a href="index.php?action=deleteComment&amp;id=<?= $post['id']?>&amp;idComment=<?= $comment['id']?>" class="link-post">supprimer</a> ou <a href="index.php?action=ignoreSignal&amp;id=<?= $post['id']?>&amp;idComment=<?= $comment['id']?>" class="link-post">ignorer le signalement</a> 
+                            </p>
+                        <?php } ?>
                         </div>
                     <?php
                     }
@@ -45,6 +51,5 @@
 
     </div><!-- .container -->
 </div>
-
 <?php $content = ob_get_clean(); 
 require('view/include/template.php'); ?>
