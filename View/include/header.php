@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="public/css/swiper.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="../public/style.css">
 
     <!-- TinyMCE -->
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

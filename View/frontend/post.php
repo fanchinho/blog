@@ -185,4 +185,5 @@
         </div><!-- .container-fluid -->
     </div><!-- .outer-container -->
 <?php $content = ob_get_clean(); ?>
-<?php require('view/include/template.php'); ?>    
+
+<?php require('View/include/template.php'); ?>    
