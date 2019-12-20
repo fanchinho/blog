@@ -102,7 +102,7 @@ ob_start(); ?>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         </ul><!-- .post-share -->
 
-                        <a class="read-more order-2" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a>
+                        <a class="read-more order-2" href="mon-journal-article-<?= $data['id'] ?>">Lire la suite</a>
 
                         <div class="comments-count order-1 order-lg-3">
                             <a href="index.php?action=post&amp;id=<?= $data['id'] ?>#comments">
@@ -128,7 +128,7 @@ ob_start(); ?>
                                     echo"active";
                                     }
                             } else if(isset($_GET['p']) && ($_GET['p']) > 0 && ($_GET['p']) == $i){ 
-                                echo "active";} ?>"><a href="index.php?p=<?= $i ?>"><?= $i ?>.</a></li>
+                                echo "active";} ?>"><a href="liste-articles-page-<?= $i ?>"><?= $i ?>.</a></li>
                             
                         <?php } ?>
                     </ul>

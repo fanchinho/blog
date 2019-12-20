@@ -1,4 +1,4 @@
-<?php $title = 'Bienvenue sur le blog de Michel Smith';
+<?php $title = 'Liste des articles de Jean Forteroche';
 ob_start(); ?>
 <div class="container-fluid">
         <div class="row">

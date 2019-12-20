@@ -16,10 +16,10 @@
 
                     <div class="col-12 col-md-3">
                         <?php if(isset($_SESSION['status']) && ($_SESSION['status'] == 'connected')) {
-                            echo "<a href=\"index.php?action=admin\" class=\"link-connect\">Admin</a>";
+                            echo "<a href=\"admin-connexion\" class=\"link-connect\">Admin</a>";
                         } 
                         else {
-                            echo "<a href=\"index.php?action=admin\" class=\"link-connect\">Admin : se connecter</a>";
+                            echo "<a href=\"admin-connexion\" class=\"link-connect\">Admin : se connecter</a>";
                         }
                         ?>
                         

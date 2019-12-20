@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Contactez Jean Forteroche'; ?>
 
 <?php ob_start(); ?>
 

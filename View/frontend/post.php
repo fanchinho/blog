@@ -1,4 +1,4 @@
-    <?php $title = $post['title'].' par Michel Smith'; ?>
+    <?php $title = htmlspecialchars($post['title']).' par Jean Forteroche'; ?>
     <?php ob_start(); ?>
     <div class="container-fluid">
         <div class="row">
@@ -74,13 +74,16 @@
                     <div class="post-comments" id="comments">
                         <h3 class="comments-title">Commentaires</h3>
 
+                     
+
                         <ol class="comment-list">
                            
                             <?php
-                                while ($comment = $comments->fetch())
+                                //while ($comment = $comments->fetch(PDO::FETCH_CLASS, '\OpenClassRooms\Blog\Class\Comment'))
                                 {
-                                if ($comment['status']==1) {
-                                        
+                                $com = new Comment($comment);
+
+                                if ($com -> status() ==1) {
                             ?>
                                
                             <li class="comment">
@@ -92,14 +95,14 @@
                                     <div class="comment-wrap">
                                         <div class="comment-author flex flex-wrap align-items-center">
                                             <span class="author_comment fn">
-                                                <?= htmlspecialchars($comment['author']) ?>  
+                                                <?= htmlspecialchars($com -> author()) ?>  
                                             </span><!-- .fn -->
 
-                                            <span class="comment-meta"> le <?= $comment['comment_date'] ?>
+                                            <span class="comment-meta"> le <?= $com -> dateComment(); ?>
                                             </span><!-- .comment-meta -->
                                         </div><!-- .comment-author -->
                                         <p>
-                                        <?= htmlspecialchars($comment['content'])?>
+                                        <?= htmlspecialchars($com -> content()) ?>
                                         </p>
                                     </div><!-- .comment-wrap -->
                                     <a href="index.php?action=signalComment&idComment=<?=$comment['id']?>&id=<?= $_GET['id'] ?>">Signaler</a>

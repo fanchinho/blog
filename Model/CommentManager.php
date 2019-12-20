@@ -2,6 +2,7 @@
 namespace OpenClassRooms\Blog\Model;
 
 require_once("Model/Manager.php");
+require_once("Entity/Comment.php");
 
 class CommentManager extends Manager
 {
@@ -11,7 +12,10 @@ class CommentManager extends Manager
         $req = $db->prepare('SELECT id, author, content, status, DATE_FORMAT(date, \'%d/%m/%Y \') AS comment_date FROM comment WHERE id_post = ? ORDER BY date DESC');
         $req->execute(array($postId));
         
-        return $req;
+        $req->setFetchMode(PDO::FETCH_CLASS, 'Comment');
+        $comment = $req->fetchAll();
+    
+        return $comment;
 
     }
 

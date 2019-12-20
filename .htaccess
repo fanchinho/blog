@@ -1,0 +1,28 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule mon-journal-article-([0-9]+)$  index.php?action=post&id=$1 [QSA,L]
+RewriteRule mon-journal-article-([0-9]+)$  index.php?action=post&id=$1 [QSA,L]
+RewriteRule liste-articles-page-([0-9]+)$  index.php?p=$1 [QSA,L]
+
+RewriteRule articles-tag-([0-9]+)$  index.php?action=tag&id=$1 [QSA,L]
+
+RewriteRule a-propos-de-jean-forteroche  index.php?action=about [QSA,L]
+RewriteRule contactez-moi  index.php?action=contact [QSA,L]
+RewriteRule contactez-moi  index.php?action=contact [QSA,L]
+
+RewriteRule (.*)-connexion$ index.php?action=$1 [QSA,L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*)-([0-9]+)-([0-9]+)$  index.php?action=$1&id=$2&idComment=$3 [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*)-([0-9]+)$  index.php?action=$1&id=$2 [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*) index.php?action=$1 [QSA,L]
+

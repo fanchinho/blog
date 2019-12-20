@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Liste de mes articles'; ?>
 
 <?php ob_start(); ?>
 <h1>Mon super blog !</h1>

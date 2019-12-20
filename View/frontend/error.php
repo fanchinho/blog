@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Erreur !'; ?>
 <?php ob_start(); ?>
     <div class="container-fluid container-error">
     <iframe src="https://giphy.com/embed/iN1aMj0XwhsNq" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/g1ft3d-gif-art-caption-iN1aMj0XwhsNq">via GIPHY</a></p>

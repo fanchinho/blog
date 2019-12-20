@@ -42,9 +42,9 @@
                     <div class="col-12 col-lg-6 flex justify-content-between justify-content-lg-end align-items-center">
                         <div class="header-bar-social d-none d-md-block">
                             <ul class="flex align-items-center">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="http://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div><!-- .header-bar-social -->
 
@@ -75,8 +75,8 @@
 
                         <ul class="flex-lg flex-lg-row justify-content-lg-center align-content-lg-center">
                             <li class="current-menu-item"><a href="index.php">Home</a></li>
-                            <li><a href="index.php?action=about">à propos</a></li>
-                            <li><a href="index.php?action=contact">Contact</a></li>
+                            <li><a href="a-propos-de-jean-forteroche">à propos</a></li>
+                            <li><a href="contactez-moi">Contact</a></li>
                             <!--<?php 
                                 
                                 if(isset($_SESSION['status']) && ($_SESSION['status'] == 'connected')) {

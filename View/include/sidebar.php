@@ -35,7 +35,7 @@
             while ($dataTag = $tagSide->fetch())
                 {
                 ?>
-                <a href="index.php?action=tag&id=<?= $dataTag['id'] ?>">#<?= htmlspecialchars($dataTag['tag_name']) ?></a>
+                <a href="articles-tag-<?= $dataTag['id'] ?>">#<?= htmlspecialchars($dataTag['tag_name']) ?></a>
 
             <?php
                 }

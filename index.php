@@ -1,8 +1,10 @@
-<?php session_start(); ?>
-<?php require('Controller/frontend.php');
+<?php session_start(); 
+use \Blog\Controller;
+require('Controller/frontend.php');
 require('Controller/backend.php');
-try {
 
+ini_set('display_startup_errors', 1); ini_set('display_errors', 1); error_reporting(-1);
+try {
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
         switch ($action) {
@@ -26,7 +28,7 @@ try {
             break;
             // COMMENTAIRES
             // Signalement des commentaires front
-            case 'signalComment' : 
+            case 'signalComment': 
                 if (isset($_GET['idComment']) && $_GET['idComment'] > 0) {
                     signalComment($_GET['idComment']);
                 }

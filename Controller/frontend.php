@@ -1,9 +1,11 @@
 <?php
+namespace OpenClassRooms\Blog\Controller;
+
 // Chargement des classes
 require_once('Model/PostManager.php');
 require_once('Model/CommentManager.php');
 require_once('Model/TagManager.php');
-
+//require_once('Entity/comment.php');
 
 use \OpenClassRooms\Blog\Model\PostManager;
 use \OpenClassRooms\Blog\Model\CommentManager;
@@ -101,7 +103,8 @@ function post()
     
     //récupération des commentaires de l'article
     $comments = $commentManager->getComments($_GET['id']);
-
+    var_dump($comments);
+    die();
     //récupération des derniers articles
     $lastPosts = $postManager -> lastPosts();
     

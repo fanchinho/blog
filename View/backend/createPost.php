@@ -10,7 +10,7 @@
                     <div class="comment-respond">
                         <form  action="index.php?action=addPost" method="post" class="comment-form" enctype="multipart/form-data">
                             <label for="fileUpload">Image de l'article <small style="color:red;"> *</small></label>
-                            <input type="file" name="photo" id="fileUpload" required><br><br>
+                            <input type="file" accept="image/*" name="photo" id="fileUpload" required><br><br>
                             <label for="title">Renseignez le titre de l'article <small style="color:red;"> *</small></label>
                             <input type="text" id="title" name="title" required>
                             <label for="tags">Tags (séparez par une virgule)</label>

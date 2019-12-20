@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'A propos de Jean Forteroche'; ?>
 <?php ob_start(); ?>
     <div class="container-fluid">
         <div class="row">
