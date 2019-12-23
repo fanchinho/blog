@@ -1,56 +1,87 @@
 <?php
-require_once('Model/CommentManager.php');
-use \OpenClassRooms\Blog\Model\CommentManager;
+//namespace OpenClassRooms\Blog\Entity;
+//require_once('Model/CommentManager.php');
+//require_once("Entity/Hydrate.php");
+//use \OpenClassRooms\Blog\Model\CommentManager;
 
 class Post {
-    private $_idArray;
-    private $_idPost;
-    private $_date;
-    private $_image;
-    private $_content;
-    private $_status;
+   
+    private $id;
+    private $title;
+    private $image; 
+    private $content;
+    private $date_creation;
+ 
+  
 
-    function __construct ($idArray) {
-        //$this->_idPost = $idPost;
-        //$this->_author = $author;
-        //$this->_content = $content;
-        $this->_idArray = $idArray;
-    }
+    /*
+    public function __construct ($_idArray,$_idPost,$_date,$_author,$_content,$_mail,$_status) {
+        $this->_idArray = $_idArray;
+        $this->_idPost = $_idPost;
+        $this->_author = $_author;
+        $this->_content = $_content;
+        $this->_date = $_date;
+        $this->_mail = $_mail;
+        $this->_status = $_status;
+    }*/
+     /*
     public function mail () {
         $this->_idArray['1'] = $this->_mail;
         return  $this->_mail;
     }
-    public function Connect () {
+   public function Connect () {
         $idPost = $this->_idPost;
 
         $commentManager = new CommentManager();
         $comments = $commentManager->getComments($idPost);
         
         return $comments;
+    }*/
+
+
+    // GETTERS
+    public function get_id(){
+        return $this->id;
     }
-    public function author () {
-        $this -> _author = $this->_idArray['1'];
-        return $this -> _author;
+
+    public function get_title(){
+        return $this->title;
     }
-    public function status () {
-        $this -> _status = $this->_idArray['3'];
-        return $this -> _status;
+
+    public function get_image(){
+        return $this->image;
     }
-    public function imagePost () {
-        $this -> _image = $this->_idArray['4'];
-        return $this -> _image;
+
+    public function get_content(){
+        return $this->content;
     }
-    public function datePost () {
-        $this -> _date = $this->_idArray['4'];
-        return $this -> _date;
+
+    public function get_date_creation(){
+        return $this->date_creation;
     }
-    public function content () {
-        $this -> _content = $this->_idArray['2'];
-        return $this -> _content;
+
+
+
+   // SETTERS
+    public function set_id($id){
+        $this->id = $id;
     }
-    public function create () {
-        
-        
+
+    public function set_title($title){
+        $this->title = $title;
     }
-   
+
+    public function set_image($image){
+        $this->image = $image;
+    }
+
+    public function set_content($author){
+        $this->author = $author;
+    }
+
+    
+    public function set_date_creation($date_creation){
+        $this->date_creation = $date_creation;
+    }
+
 }   

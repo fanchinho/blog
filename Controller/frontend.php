@@ -1,15 +1,16 @@
 <?php
-namespace OpenClassRooms\Blog\Controller;
+//namespace OpenClassRooms\Blog\Controller;
+
+
+use \OpenClassRooms\Blog\Model\PostManager;
+use \OpenClassRooms\Blog\Model\CommentManager;
+use \OpenClassRooms\Blog\Model\TagManager;
+
 
 // Chargement des classes
 require_once('Model/PostManager.php');
 require_once('Model/CommentManager.php');
 require_once('Model/TagManager.php');
-//require_once('Entity/comment.php');
-
-use \OpenClassRooms\Blog\Model\PostManager;
-use \OpenClassRooms\Blog\Model\CommentManager;
-use \OpenClassRooms\Blog\Model\TagManager;
 
 function homepage ()
 {
@@ -25,8 +26,7 @@ function homepage ()
     
     $paginationInfo = pagination($countPost);
 
-    $post = $postManager->getPosts($paginationInfo['0'], $paginationInfo['1']);
-    
+    $posts = $postManager->getPosts($paginationInfo['0'], $paginationInfo['1']);
     require('view/frontend/home.php');
 }
 function listPostByTag ($idTag)
@@ -42,7 +42,7 @@ function listPostByTag ($idTag)
 
     $paginationInfo = pagination($countPost);
 
-    $post = $tagManager->getPostsByTag($paginationInfo['0'], $paginationInfo['1'], $idTag);
+    $posts = $tagManager->getPostsByTag($paginationInfo['0'], $paginationInfo['1'], $idTag);
 
     require('view/frontend/PostsByTag.php');
 }
@@ -91,7 +91,7 @@ function post()
     $tagManager = new TagManager();
     
     $post = $postManager->getPost($_GET['id']);
-    
+
     //récupération des id des tags
     $tagsPost = $tagManager->TagsbyPost($_GET['id']);
 
@@ -103,8 +103,7 @@ function post()
     
     //récupération des commentaires de l'article
     $comments = $commentManager->getComments($_GET['id']);
-    var_dump($comments);
-    die();
+
     //récupération des derniers articles
     $lastPosts = $postManager -> lastPosts();
     

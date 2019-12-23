@@ -56,22 +56,21 @@ ob_start(); ?>
             <div class="col-12 col-lg-9">
                 
                 <?php
-                while ($data = $post->fetch())
-                {
+                foreach ($posts as $post) {
                 ?>
                 
                 <div class="content-wrap">
                     <header class="entry-header">
                         <div class="posted-date">
-                            <?= $data['date_creation'] ?>
+                            <?= $post->get_date_creation() ?>
                         </div><!-- .posted-date -->
 
                         <h2 class="entry-title">
                         
-                        <?= htmlspecialchars($data['title']) ?></h2>
+                        <?= htmlspecialchars($post->get_title()) ?></h2>
         
                         <div class="tags-links">
-                            <?php $tagsPost = $tagManager->TagsbyPost($data['id']);
+                            <?php $tagsPost = $tagManager->TagsbyPost($post->get_id());
                         
                             
                             while ($dataTag = $tagsPost->fetch())
@@ -86,11 +85,11 @@ ob_start(); ?>
                     </header><!-- .entry-header -->
 
                     <figure class="featured-image">
-                        <img src="Public/images/upload/<?= htmlspecialchars($data['image']) ?>" alt="<?= htmlspecialchars($data['title']) ?>">
+                        <img src="Public/images/upload/<?= htmlspecialchars($post->get_image()) ?>" alt="<?= htmlspecialchars($data['title']) ?>">
                     </figure><!-- .featured-image -->
 
                     <div class="entry-content">
-                        <p><?= $data['content'] ?> ... </p>
+                        <p><?= $post->get_content() ?> ... </p>
                     </div><!-- .entry-content -->
 
                     <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
@@ -102,11 +101,11 @@ ob_start(); ?>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         </ul><!-- .post-share -->
 
-                        <a class="read-more order-2" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a>
+                        <a class="read-more order-2" href="index.php?action=post&amp;id=<?= $post->get_id() ?>">Lire la suite</a>
 
                         <div class="comments-count order-1 order-lg-3">
-                            <a href="index.php?action=post&amp;id=<?= $data['id'] ?>#comments">
-                            <?php  $numberComments = $commentManager->NumberComments($data['id']);
+                            <a href="index.php?action=post&amp;id=<?= $post->get_id() ?>#comments">
+                            <?php  $numberComments = $commentManager->NumberComments($post->get_id());
                                 echo $numberComments['Nbr_comments']; 
                                 ?> Commentaires
                             </a>
@@ -116,7 +115,7 @@ ob_start(); ?>
                 
                 <?php
                     }
-                    $post->closeCursor();
+                
                 ?>
 
                 <div class="pagination">

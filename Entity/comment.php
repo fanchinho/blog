@@ -1,28 +1,35 @@
 <?php
-namespace OpenClassRooms\Blog\Entity;
-//require_once('Model/CommentManager.php');
-//use \OpenClassRooms\Blog\Model\CommentManager;
+use \OpenClassRooms\Blog\Model\CommentManager;
 
-class Comment {
-    private $_idArray;
-    private $_idPost;
-    private $_date;
-    private $_author;
-    private $_content;
-    private $_mail;
-    private $_status;
+class Comment{
+   
+    private $id;
+    private $mail;
+    private $comment_date; 
+    private $content;
+    private $status;
+    private $moderate;
+    private $id_post;
+    private $author;
+ 
+  
 
-    function __construct ($comment) {
-        //$this->_idPost = $idPost;
-        //$this->_author = $author;
-        //$this->_content = $content;
-        $this->_comment = $comment;
-    }
+    /*
+    public function __construct ($_idArray,$_idPost,$_date,$_author,$_content,$_mail,$_status) {
+        $this->_idArray = $_idArray;
+        $this->_idPost = $_idPost;
+        $this->_author = $_author;
+        $this->_content = $_content;
+        $this->_date = $_date;
+        $this->_mail = $_mail;
+        $this->_status = $_status;
+    }*/
+     /*
     public function mail () {
         $this->_idArray['1'] = $this->_mail;
         return  $this->_mail;
     }
-    /*public function Connect () {
+   public function Connect () {
         $idPost = $this->_idPost;
 
         $commentManager = new CommentManager();
@@ -30,22 +37,71 @@ class Comment {
         
         return $comments;
     }*/
-    public function author () {
-        $this -> _author = $this->_comment['author'];
-        return $this -> _author;
+
+
+    // GETTERS
+    public function get_id(){
+        return $this->id;
     }
-    public function status () {
-        $this -> _status = $this->_comment['status'];
-        return $this -> _status;
+
+    public function get_mail(){
+        return $this->mail;
     }
-    public function dateComment () {
-        $this -> _date = $this->_comment['comment_date'];
-        return $this -> _date;
+
+    public function get_comment_date(){
+        return $this->comment_date;
     }
-    public function content () {
-        $this -> _content = $this->_comment['content'];
-        return $this -> _content;
+
+    public function get_content(){
+        return $this->content;
     }
-   
+
+    public function get_status(){
+        return $this->status;
+    }
+
+    public function get_moderate(){
+        return $this->moderate;
+    }
+
+    public function get_id_post(){
+        return $this->id_post;
+    }
+
+    public function get_author(){
+        return $this->author;
+    }
+
+
+
+   // SETTERS
+    public function set_idArray($id){
+        $this->id = $id;
+    }
+
+    public function set_idPost($idPost){
+        $this->idPost = $idPost;
+    }
+
+    public function set_date($date){
+        $this->date = $date;
+    }
+
+    public function set_author($author){
+        $this->author = $author;
+    }
+
+    
+    public function set_content($content){
+        $this->content = $content;
+    }
+
+    public function set_mail($mail){
+        $this->mail = $mail;
+    }
+
+    public function set_status($status){
+        $this->status = $status;
+    }
    
 }   

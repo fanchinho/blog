@@ -1,4 +1,4 @@
-    <?php $title = htmlspecialchars($post['title']).' par Jean Forteroche'; ?>
+    <?php $title = htmlspecialchars($post->get_title()).' par Jean Forteroche'; ?>
     <?php ob_start(); ?>
     <div class="container-fluid">
         <div class="row">
@@ -29,11 +29,11 @@
                 <div class="content-wrap">
                     <header class="entry-header">
                         <div class="posted-date">
-                            <?= $post['date_creation'] ?>
+                            <?= $post->get_date_creation() ?>
 
                         </div><!-- .posted-date -->
 
-                        <h2 class="entry-title"><?= htmlspecialchars($post['title'])?></h2>
+                        <h2 class="entry-title"><?= htmlspecialchars($post->get_title())?></h2>
 
                         <div class="tags-links">
                             <?php
@@ -49,11 +49,11 @@
                     </header><!-- .entry-header -->
 
                     <figure class="featured-image">
-                        <img src="Public/images/upload/<?= htmlspecialchars($post['image']) ?>" alt="<?= htmlspecialchars($post['title']) ?>">
+                        <img src="Public/images/upload/<?= htmlspecialchars($post->get_image()) ?>" alt="<?= htmlspecialchars($post->get_title()) ?>">
                     </figure><!-- .featured-image -->
 
                     <div class="entry-content">
-                        <p><?= $post['content'] ?> </p>
+                        <p><?= $post->get_content() ?> </p>
                     </div><!-- .entry-content -->
 
                     <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
@@ -79,41 +79,41 @@
                         <ol class="comment-list">
                            
                             <?php
-                                //while ($comment = $comments->fetch(PDO::FETCH_CLASS, '\OpenClassRooms\Blog\Class\Comment'))
-                                {
-                                $com = new Comment($comment);
 
-                                if ($com -> status() ==1) {
-                            ?>
-                               
-                            <li class="comment">
-                                <div class="comment-body flex justify-content-between">
-                                    <!-- <figure class="comment-author-avatar">
-                                        <img src="public/images/user-1.jpg" alt="user">
-                                    </figure> --><!-- .comment-author-avatar -->
+                                foreach($comments as $com){
+                                       
+                                    if ($com->get_status() ==1) {
 
-                                    <div class="comment-wrap">
-                                        <div class="comment-author flex flex-wrap align-items-center">
-                                            <span class="author_comment fn">
-                                                <?= htmlspecialchars($com -> author()) ?>  
-                                            </span><!-- .fn -->
+                                        ?>
+                                        
+                                        <li class="comment">
+                                            <div class="comment-body flex justify-content-between">
+                                                <!-- <figure class="comment-author-avatar">
+                                                    <img src="public/images/user-1.jpg" alt="user">
+                                                </figure> --><!-- .comment-author-avatar -->
 
-                                            <span class="comment-meta"> le <?= $com -> dateComment(); ?>
-                                            </span><!-- .comment-meta -->
-                                        </div><!-- .comment-author -->
-                                        <p>
-                                        <?= htmlspecialchars($com -> content()) ?>
-                                        </p>
-                                    </div><!-- .comment-wrap -->
-                                    <a href="index.php?action=signalComment&idComment=<?=$comment['id']?>&id=<?= $_GET['id'] ?>">Signaler</a>
-                                </div><!-- .comment-body -->
-                            </li><!-- .comment -->
+                                                <div class="comment-wrap">
+                                                    <div class="comment-author flex flex-wrap align-items-center">
+                                                        <span class="author_comment fn">
+                                                            <?= htmlspecialchars($com->get_author()) ?>  
+                                                        </span><!-- .fn -->
 
-                            <?php
+                                                        <span class="comment-meta"> le <?= $com -> get_comment_date(); ?>
+                                                        </span><!-- .comment-meta -->
+                                                    </div><!-- .comment-author -->
+                                                    <p>
+                                                    <?= htmlspecialchars($com->get_content()) ?>
+                                                    </p>
+                                                </div><!-- .comment-wrap -->
+                                                <a href="index.php?action=signalComment&idComment=<?=$com->get_id()?>&id=<?= $_GET['id'] ?>">Signaler</a>
+                                            </div><!-- .comment-body -->
+                                        </li><!-- .comment -->
+
+                                        <?php
+                                    }
+
                                 }
-
-                                }
-                                $comments->closeCursor();
+                                //$comments->closeCursor();
                             ?>
                         </ol><!-- .comment-list -->
                     </div><!-- .post-comments -->
@@ -122,7 +122,7 @@
                         <div class="comment-respond">
                             <h3 class="comment-reply-title">Laissez un commentaire</h3>
 
-                            <form  action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post" class="comment-form">
+                            <form  action="index.php?action=addComment&amp;id=<?= $post->get_id() ?>" method="post" class="comment-form">
                                 <input type="text" placeholder="Pseudo" id="pseudo" name="pseudo" required> 
                                 <input type="email" placeholder="Email" id="email" name="email" required>
                                 <textarea rows="18" cols="6" placeholder="Message" id="message" name="message" required
@@ -141,31 +141,32 @@
         <div class="container-fluid">
             <div class="row footer-recent-posts">
                 <?php
-                    while ($last = $lastPosts->fetch())
+                    foreach($lastPosts as $lastPost)
                     {
+                        
                 ?>         
-                <div class="col-12 col-md-6 col-xl-3"<?php if($last['id'] == ($_GET['id'])) { ?>
+                <div class="col-12 col-md-6 col-xl-3"<?php if($lastPost->get_id() == ($_GET['id'])) { ?>
                     echo style="display:none;"
                     <?php } ?>>
                     <div class="footer-post-wrap flex flex-column justify-content-between">
                         <figure>
-                        <img src="Public/images/upload/<?= htmlspecialchars($last['image']) ?>" alt="<?= htmlspecialchars($last['title']) ?>">
+                        <img src="Public/images/upload/<?= htmlspecialchars($lastPost->get_image()) ?>" alt="<?= htmlspecialchars($lastPost->get_title()) ?>">
                         </figure>
 
                         <div class="footer-post-cont flex flex-column justify-content-between">
                             <header class="entry-header">
                                 <div class="posted-date">
-                                    <?= $last['date_creation'];?>
+                                    <?= $lastPost->get_date_creation();?>
                                 </div><!-- .entry-header -->
 
-                                <h3><a href="index.php?action=post&id=<?= $last['id'];?>"><?= $last['title'];?></a></h3>
+                                <h3><a href="index.php?action=post&id=<?= $lastPost->get_id() ?>"><?= $lastPost->get_title()?></a></h3>
 
                                 <div class="tags-links">
-                                    <?php $tagsPost = $tagManager->TagsbyPost($last['id']);
+                                    <?php $tagsPost = $tagManager->TagsbyPost($lastPost->get_id());
                                         while ($dataTag = $tagsPost->fetch())
                                         {
                                         ?>
-                                        <a href="index.php?action=tag&id=<?= $dataTag['id'] ?>">#<?= $dataTag['tag_name'] ?></a>
+                                        <a href="index.php?action=tag&id=<?= $lastPost->get_id() ?>">#<?= $dataTag['tag_name'] ?></a>
                                         <?php
                                         }
                                         $tagsPost->closeCursor();
@@ -174,14 +175,13 @@
                             </header><!-- .entry-header -->
 
                             <footer class="entry-footer">
-                                <a class="read-more" href="index.php?action=post&id=<?= $last['id'];?>">Lire l'article</a>
+                                <a class="read-more" href="index.php?action=post&id=<?= $lastPost->get_id()?>">Lire l'article</a>
                             </footer><!-- .entry-footer -->
                         </div><!-- .footer-post-cont -->
                     </div><!-- .footer-post-wrap -->
                 </div><!-- .col -->
                 <?php
                     }
-                    $lastPosts->closeCursor();
                 ?>
         
             </div><!-- .row -->

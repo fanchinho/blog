@@ -39,7 +39,7 @@
 
             <?php
                 }
-                $post->closeCursor();
+                $tagSide->closeCursor();
             ?>
         </div><!-- .tags-list -->
 

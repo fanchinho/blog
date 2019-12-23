@@ -2,6 +2,7 @@
 namespace OpenClassRooms\Blog\Model;
 
 require_once("Model/Manager.php");
+require_once("Entity/Post.php");
 
 class TagManager extends Manager
 {
@@ -26,8 +27,9 @@ class TagManager extends Manager
         $db = $this->dbConnect();
         $PostsTag = $db->prepare('SELECT id, title, image, content, DATE_FORMAT(date, \'%d/%m/%Y\') AS date_creation FROM `TagsPost` t1,`post` t2 WHERE t1.idPost=t2.id AND t1.idTag = ? ORDER BY date DESC LIMIT '.(($currentPage-1)*$limitPost).', '.$limitPost.'');
         $PostsTag->execute(array($idTag));
+        $posts = $PostsTag->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE,'Post');
         
-        return $PostsTag;
+        return $posts;
     }  
     public function numberPostsByTag($tag)
     {

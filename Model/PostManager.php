@@ -1,20 +1,30 @@
-<?php namespace OpenClassRooms\Blog\Model;
+<?php 
+
+namespace OpenClassRooms\Blog\Model;
 
 require_once("Model/Manager.php");
+require_once("Entity/Post.php");
 
 class PostManager extends Manager
 {
-    public function getPosts($currentPage, $limitPost)
+    public function getPosts($currentPage=1, $limitPost=5)
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, image, content, DATE_FORMAT(date, \'%d/%m/%Y\') AS date_creation FROM post ORDER BY date DESC LIMIT '.(($currentPage-1)*$limitPost).', '.$limitPost.'');
-        return $req;
+        $req->execute(array($currentPage=1, $limitPost=5));
+
+        $posts = $req->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE,'Post');
+        
+        return $posts;
+
     }
     public function lastPosts()
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, image, content, DATE_FORMAT(date, \'%d/%m/%Y\') AS date_creation FROM post ORDER BY date DESC LIMIT 0,4');
-        return $req;
+        $lastposts = $req->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE,'Post');
+   
+        return $lastposts;
     }
     public function numberPosts()
     {
@@ -30,9 +40,8 @@ class PostManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, image, DATE_FORMAT(date, \'%d/%m/%Y\') AS date_creation FROM post WHERE id = ?');
         $req->execute(array($postId));
+        $post = $req->fetchObject('Post');
         
-        $post = $req->fetch();
-
         return $post;
     }
     public function getAsidePost()

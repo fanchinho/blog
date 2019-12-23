@@ -12,8 +12,7 @@ class CommentManager extends Manager
         $req = $db->prepare('SELECT id, author, content, status, DATE_FORMAT(date, \'%d/%m/%Y \') AS comment_date FROM comment WHERE id_post = ? ORDER BY date DESC');
         $req->execute(array($postId));
         
-        $req->setFetchMode(PDO::FETCH_CLASS, 'Comment');
-        $comment = $req->fetchAll();
+        $comment = $req->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE,'Comment');
     
         return $comment;
 
