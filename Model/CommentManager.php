@@ -18,14 +18,14 @@ class CommentManager extends Manager
 
     }
 
-    public function postComment($postId, $mail, $author, $content)
+    public function postComment($commentObject)
     {
 
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO comment(id_post, mail, author, content, status, date) VALUES(?, ?, ?, ?, 1,NOW())');
 
-        $affectedLines = $comments->execute(array($postId, $mail, $author, $content));
-        
+        $affectedLines = $comments->execute(array($commentObject->get_idPost(), $commentObject->get_mail(), $commentObject->get_author(), $commentObject->get_content()));
+
         return $affectedLines;
     }
     

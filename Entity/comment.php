@@ -9,34 +9,10 @@ class Comment{
     private $content;
     private $status;
     private $moderate;
-    private $id_post;
+    private $idPost;
     private $author;
  
   
-
-    /*
-    public function __construct ($_idArray,$_idPost,$_date,$_author,$_content,$_mail,$_status) {
-        $this->_idArray = $_idArray;
-        $this->_idPost = $_idPost;
-        $this->_author = $_author;
-        $this->_content = $_content;
-        $this->_date = $_date;
-        $this->_mail = $_mail;
-        $this->_status = $_status;
-    }*/
-     /*
-    public function mail () {
-        $this->_idArray['1'] = $this->_mail;
-        return  $this->_mail;
-    }
-   public function Connect () {
-        $idPost = $this->_idPost;
-
-        $commentManager = new CommentManager();
-        $comments = $commentManager->getComments($idPost);
-        
-        return $comments;
-    }*/
 
 
     // GETTERS
@@ -64,8 +40,8 @@ class Comment{
         return $this->moderate;
     }
 
-    public function get_id_post(){
-        return $this->id_post;
+    public function get_idPost(){
+        return $this->idPost;
     }
 
     public function get_author(){

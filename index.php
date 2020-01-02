@@ -20,7 +20,8 @@ try {
             //PAGE ARTICLE
             case 'post' : 
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    post();
+
+                    post($_GET['id']);
                 }
                 else {
                     throw new Exception('Aucun identifiant de billet envoyé');
@@ -69,7 +70,9 @@ try {
                     if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['message'])) {
                         if(addComment($_GET['id'], $_POST['pseudo'], $_POST['email'], $_POST['message']) == true) 
                         {
-                            post();
+                            $idPost = addComment($_GET['id']);
+                            header("Location: index.php?action=post&id=".$idPost);
+
                         }
                     }
                     else {

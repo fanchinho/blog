@@ -84,25 +84,26 @@ function blog ()
 }
 
 
-function post()
+function post($idPost)
 {
+    $idPost = $_GET['id'];
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     $tagManager = new TagManager();
     
-    $post = $postManager->getPost($_GET['id']);
+    $post = $postManager->getPost($idPost);
 
     //récupération des id des tags
-    $tagsPost = $tagManager->TagsbyPost($_GET['id']);
+    $tagsPost = $tagManager->TagsbyPost($idPost);
 
     //récupération des tags
-    $tagsPost = $tagManager->TagsbyPost($_GET['id']);
+    $tagsPost = $tagManager->TagsbyPost($idPost);
     
     //nombre de commentaires
-    $numberComments = $commentManager->NumberComments($_GET['id']);
+    $numberComments = $commentManager->NumberComments($idPost);
     
     //récupération des commentaires de l'article
-    $comments = $commentManager->getComments($_GET['id']);
+    $comments = $commentManager->getComments($idPost);
 
     //récupération des derniers articles
     $lastPosts = $postManager -> lastPosts();
@@ -115,7 +116,15 @@ function addComment($postId, $author, $mail, $content)
 {
     $commentManager = new CommentManager();
 
-    $affectedLines = $commentManager->postComment($postId, $mail, $author, $content);
+    $comment = new Comment();
+    $comment->set_idPost($postId);
+    $comment->set_author($author);
+    $comment->set_mail($author);
+    $comment->set_content($content);
+
+
+
+    $affectedLines = $commentManager->postComment($comment);
 
     header("Location: index.php?action=post&id=".$postId);
 

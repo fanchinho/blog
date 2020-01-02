@@ -2,16 +2,17 @@
 namespace OpenClassRooms\Blog\Model;
 
 require_once("Model/Manager.php");
+require_once("Entity/Post.php");
 
 class AdminPostManager extends Manager
 {
 // GESTION DE LA CREATION, administration DE POSTS
-    public function addPost ($title, $content, $filename)
+    public function addPost ($postObject)
     {
         $db = $this->dbConnect();
         $post = $db->prepare('INSERT INTO post(title, content, image, date) VALUES(?, ?, ?, NOW())');
-        
-        $affectedPost = $post->execute(array($title, $content, $filename));
+
+        $affectedPost = $post->execute(array($postObject->get_title(), $postObject->get_content(), $postObject->get_image()));
                 
         $newIdPost = $db->lastInsertId();
 
@@ -32,28 +33,28 @@ class AdminPostManager extends Manager
     }
     
 
-    public function changeCompletePost ($postId, $title, $content, $image)
+    public function changeCompletePost ($postObject)
     {
         $db = $this->dbConnect();
         $post = $db->prepare('UPDATE post SET title = :newTitle, content = :newContent, image = :newImage WHERE id = :postId');
         $newPost = $post->execute(array(
-            'postId' => $postId,
-            'newTitle' => $title,
-            'newContent' => $content,
-            'newImage' => $image,
+            'postId' => $postObject->get_id(),
+            'newTitle' => $postObject->get_title(),
+            'newContent' => $postObject->get_content(),
+            'newImage' => $postObject->get_image(),
             ));
         
         return $newPost;
 
     }
-    public function changePost ($postId, $title, $content)
+    public function changePost ($postObject)
     {
         $db = $this->dbConnect();
         $post = $db->prepare('UPDATE post SET title = :newTitle, content = :newContent WHERE id = :postId');
         $newPost = $post->execute(array(
-            'postId' => $postId,
-            'newTitle' => $title,
-            'newContent' => $content,
+            'postId' => $postObject->get_id(),
+            'newTitle' => $postObject->get_title(),
+            'newContent' => $postObject->get_content(),
             ));
         
         return $newPost;

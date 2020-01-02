@@ -11,32 +11,6 @@ class Post {
     private $image; 
     private $content;
     private $date_creation;
- 
-  
-
-    /*
-    public function __construct ($_idArray,$_idPost,$_date,$_author,$_content,$_mail,$_status) {
-        $this->_idArray = $_idArray;
-        $this->_idPost = $_idPost;
-        $this->_author = $_author;
-        $this->_content = $_content;
-        $this->_date = $_date;
-        $this->_mail = $_mail;
-        $this->_status = $_status;
-    }*/
-     /*
-    public function mail () {
-        $this->_idArray['1'] = $this->_mail;
-        return  $this->_mail;
-    }
-   public function Connect () {
-        $idPost = $this->_idPost;
-
-        $commentManager = new CommentManager();
-        $comments = $commentManager->getComments($idPost);
-        
-        return $comments;
-    }*/
 
 
     // GETTERS
@@ -45,7 +19,7 @@ class Post {
     }
 
     public function get_title(){
-        return $this->title;
+        return htmlspecialchars($this->title);
     }
 
     public function get_image(){
@@ -60,8 +34,6 @@ class Post {
         return $this->date_creation;
     }
 
-
-
    // SETTERS
     public function set_id($id){
         $this->id = $id;
@@ -75,11 +47,10 @@ class Post {
         $this->image = $image;
     }
 
-    public function set_content($author){
-        $this->author = $author;
+    public function set_content($content){
+        $this->content = $content;
     }
 
-    
     public function set_date_creation($date_creation){
         $this->date_creation = $date_creation;
     }

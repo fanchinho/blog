@@ -4,7 +4,7 @@ require_once('Model/AdminManager.php');
 require_once('Model/AdminPostManager.php');
 require_once('Model/AdminCommentManager.php');
 require_once('Model/TagManager.php');
-
+require_once('Entity/Post.php');
 
 use \OpenClassRooms\Blog\Model\AdminManager;
 use \OpenClassRooms\Blog\Model\AdminPostManager;
@@ -93,8 +93,13 @@ function addPost () {
             $filename = uploadPhoto($_FILES["photo"]);
             $postManager = new AdminPostManager();
 
+            $post = new Post();
+            $post->set_title($_POST['title']);
+            $post->set_content($_POST['content']);
+            $post->set_image($filename);
+            
             //création du post et récupération de l'id du post
-            $affectedPost = $postManager->addPost($_POST['title'], $_POST['content'], $filename);
+            $affectedPost = $postManager->addPost($post);
 
             //fonction pour la création du tags
             if (!empty($_POST['tags'])) {
@@ -186,7 +191,14 @@ function change ($postId) {
 function changePost ($postId, $title, $content) {
     if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
         $postToChangeManager = new AdminPostManager();
-        $post = $postToChangeManager -> changePost($postId, $title, $content);
+        
+        // création de l'objet
+        $post = new Post();
+        $post->set_id($postId);
+        $post->set_title($title);
+        $post->set_content($content);
+
+        $post = $postToChangeManager -> changePost($post);
         //fonction pour la création du tags
         if (!empty($_POST['tags'])) {
             addTags($postId, $_POST['tags']);
@@ -200,7 +212,14 @@ function changePost ($postId, $title, $content) {
 function changeCompletePost ($postId, $title, $content, $image) {
     if(isset($_SESSION['status']) && $_SESSION['status']=="connected") {
         $postToChangeManager = new AdminPostManager();
-        $post = $postToChangeManager -> changeCompletePost($postId, $title, $content, $image);
+
+        // création de l'objet
+        $post = new Post();
+        $post->set_id($postId);
+        $post->set_title($title);
+        $post->set_content($content);
+        $post->set_image($image);
+        $post = $postToChangeManager -> changeCompletePost($post);
 
         //fonction pour la création du tags
         if (!empty($_POST['tags'])) {

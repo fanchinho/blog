@@ -57,8 +57,6 @@ ob_start(); ?>
                 
                 <?php
                 foreach($posts as $post) {
-                //while ($data = $post->fetch())
-                //{
                 ?>
                 
                 <div class="content-wrap">
@@ -69,7 +67,7 @@ ob_start(); ?>
 
                         <h2 class="entry-title">
                         
-                        <?= htmlspecialchars($post->get_title()) ?></h2>
+                        <?= $post->get_title() ?></h2>
         
                         <div class="tags-links">
                             <?php $tagsPost = $tagManager->TagsbyPost($post->get_id());
@@ -117,7 +115,6 @@ ob_start(); ?>
                 
                 <?php
                     }
-                    //$post->closeCursor();
                 ?>
                 
                 <div class="pagination">
