@@ -1,8 +1,4 @@
 <?php
-//namespace OpenClassRooms\Blog\Entity;
-//require_once('Model/CommentManager.php');
-//require_once("Entity/Hydrate.php");
-//use \OpenClassRooms\Blog\Model\CommentManager;
 
 class Post {
    

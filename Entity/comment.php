@@ -1,7 +1,7 @@
 <?php
 use \OpenClassRooms\Blog\Model\CommentManager;
 
-class Comment{
+class Comment {
    
     private $id;
     private $mail;
@@ -11,9 +11,6 @@ class Comment{
     private $moderate;
     private $idPost;
     private $author;
- 
-  
-
 
     // GETTERS
     public function get_id(){

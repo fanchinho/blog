@@ -1,7 +1,6 @@
 <?php
 //namespace OpenClassRooms\Blog\Controller;
 
-
 use \OpenClassRooms\Blog\Model\PostManager;
 use \OpenClassRooms\Blog\Model\CommentManager;
 use \OpenClassRooms\Blog\Model\TagManager;
@@ -121,8 +120,6 @@ function addComment($postId, $author, $mail, $content)
     $comment->set_author($author);
     $comment->set_mail($author);
     $comment->set_content($content);
-
-
 
     $affectedLines = $commentManager->postComment($comment);
 

@@ -77,12 +77,11 @@
                             <li class="current-menu-item"><a href="index.php">Home</a></li>
                             <li><a href="a-propos-de-jean-forteroche">à propos</a></li>
                             <li><a href="contactez-moi">Contact</a></li>
-                            <!--<?php 
-                                
-                                if(isset($_SESSION['status']) && ($_SESSION['status'] == 'connected')) {
-                                    echo ('<li><a href="index.php?action=admin">Administration</a></li>');
-                                }
-                            ?>-->
+                            <?php 
+                            if(isset($_SESSION['status']) && ($_SESSION['status'] == 'connected')) {
+                                echo ('<li><a href="index.php?action=admin">Administration</a></li>');
+                            }
+                            ?>
                         </ul>
                     </nav><!-- .site-navigation -->
                 </div><!-- .col -->
