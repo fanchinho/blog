@@ -105,7 +105,7 @@
                                                     <?= htmlspecialchars($com->get_content()) ?>
                                                     </p>
                                                 </div><!-- .comment-wrap -->
-                                                <a href="index.php?action=signalComment&idComment=<?=$com->get_id()?>&id=<?= $_GET['id'] ?>">Signaler</a>
+                                                <a href="signaler-<?=$com->get_id()?>-<?= $_GET['id'] ?>">Signaler</a>
                                             </div><!-- .comment-body -->
                                         </li><!-- .comment -->
 
@@ -143,11 +143,9 @@
                 <?php
                     foreach($lastPosts as $lastPost)
                     {
-                        
+                    if($lastPost->get_id() != ($_GET['id'])) {
                 ?>         
-                <div class="col-12 col-md-6 col-xl-3"<?php if($lastPost->get_id() == ($_GET['id'])) { ?>
-                    echo style="display:none;"
-                    <?php } ?>>
+                <div class="col-12 col-md-6 col-xl-3">
                     <div class="footer-post-wrap flex flex-column justify-content-between">
                         <figure>
                         <img src="Public/images/upload/<?= htmlspecialchars($lastPost->get_image()) ?>" alt="<?= htmlspecialchars($lastPost->get_title()) ?>">
@@ -181,6 +179,7 @@
                     </div><!-- .footer-post-wrap -->
                 </div><!-- .col -->
                 <?php
+                    }
                     }
                 ?>
         

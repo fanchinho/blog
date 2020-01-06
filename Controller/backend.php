@@ -124,9 +124,11 @@ function addTags ($affectedPost, $tags) {
 
     foreach($a as $v) {
         $tagManager = new TagManager();
+        // On compare le nouveau tag avec la base de données de TAGS
         $CompareTag = $tagManager->TagCompare($v);
          if($CompareTag == false) {
             $affectedTag = $tagManager->TagCreate($v);
+            //affectation d'un TAG à un article
             TagsBase($affectedPost, $affectedTag);
         }
         else {
@@ -136,14 +138,10 @@ function addTags ($affectedPost, $tags) {
     }
 }
 
+//affectation d'un TAG à un article
 function TagsBase ($post, $tag) {
     $tagManager = new TagManager();
     $tagAssociate = $tagManager->TagAssociate($post, $tag);
-
-}
-
-function linkTags () {
-    $tagManager = new TagManager();
 }
 
 //Suppression d'un article

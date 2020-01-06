@@ -14,13 +14,8 @@ RewriteRule contactez-moi  index.php?action=contact [QSA,L]
 RewriteRule (.*)-connexion$ index.php?action=$1 [QSA,L]
 
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.*)-([0-9]+)-([0-9]+)$  index.php?action=$1&id=$2&idComment=$3 [QSA,L]
+RewriteRule signaler-([0-9]+)-([0-9]+)$  index.php?action=signalComment&idComment=$1&id=$2 [QSA,L]
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.*)-([0-9]+)$  index.php?action=$1&id=$2 [QSA,L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
