@@ -164,7 +164,8 @@
                                         while ($dataTag = $tagsPost->fetch())
                                         {
                                         ?>
-                                        <a href="index.php?action=tag&id=<?= $lastPost->get_id() ?>">#<?= $dataTag['tag_name'] ?></a>
+                                        <a href="articles-tag-<?= $dataTag['id'] ?>">#<?= htmlspecialchars($dataTag['tag_name']) ?></a>
+
                                         <?php
                                         }
                                         $tagsPost->closeCursor();

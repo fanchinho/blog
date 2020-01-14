@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  ven. 20 déc. 2019 à 16:19
+-- Généré le :  lun. 13 jan. 2020 à 18:32
 -- Version du serveur :  5.5.34
 -- Version de PHP :  5.5.10
 
@@ -37,14 +37,6 @@ CREATE TABLE `comment` (
   `author` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `comment`
---
-
-INSERT INTO `comment` (`id`, `mail`, `date`, `content`, `status`, `moderate`, `id_post`, `author`) VALUES
-(1, 'azd@gmail.com', '2019-12-11 12:12:16', 'zdzede', 1, 0, 243, 'azd'),
-(2, 'azd@gmail.com', '2019-12-11 14:12:18', 'autre commentaire', 1, 0, 243, 'moi ');
-
 -- --------------------------------------------------------
 
 --
@@ -66,12 +58,12 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `author`, `title`, `content`, `date`, `image`, `visiblility`) VALUES
-(238, '', 'premier article', '<p>zadazdazd</p>', '2019-11-26 18:23:42', 'patrick-perkins-3wylDrjxH-E-unsplash.jpg', 0),
-(239, '', 'azdazd', '<p>azdazdazd</p>', '2019-11-27 10:16:55', 'salome-watel-51N2NTDDtLw-unsplash.jpg', 0),
-(240, '', 'azdazd', '<p><strong>azdazdazd</strong></p>', '2019-11-27 10:17:09', 'salome-watel-51N2NTDDtLw-unsplash.jpg', 0),
-(243, '', 'avant dernier article', '<p>azdazdad</p>', '2019-11-27 10:17:42', 'salome-watel-51N2NTDDtLw-unsplash.jpg', 0),
-(244, '', 'rgrtgrtgrtg', '<p>rtgrtgr</p>', '2019-12-17 16:42:30', 'vlad-kutepov-apk5a5OFjtY-unsplash.jpg', 0),
-(245, '', 'rtgrtg', '<p>rtgrtgrt</p>', '2019-12-17 16:42:38', 'vlad-kutepov-apk5a5OFjtY-unsplash.jpg', 0);
+(249, '', 'Mon premier  article', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Le&nbsp;</span><strong style=\"margin: 0px; padding: 0px; font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Lorem Ipsum</strong><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">&nbsp;est simplement du faux texte employ&eacute; dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les ann&eacute;es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r&eacute;aliser un livre sp&eacute;cimen de polices de texte. Il n\'a pas fait que survivre cinq si&egrave;cles, mais s\'est aussi adapt&eacute; &agrave; la bureautique informatique, sans que son contenu n\'en soit modifi&eacute;. Il a &eacute;t&eacute; popularis&eacute; dans les ann&eacute;es 1960 gr&acirc;ce &agrave; la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r&eacute;cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</span></p>', '2020-01-13 18:30:10', 'freestocks-org-VFs2fZEVkXo-unsplash.jpg', 0),
+(250, '', 'j\'apprend à écrire', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Le&nbsp;</span><strong style=\"margin: 0px; padding: 0px; font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Lorem Ipsum</strong><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">&nbsp;est simplement du faux texte employ&eacute; dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les ann&eacute;es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r&eacute;aliser un livre sp&eacute;cimen de polices de texte. Il n\'a pas fait que survivre cinq si&egrave;cles, mais s\'est aussi adapt&eacute; &agrave; la bureautique informatique, sans que son contenu n\'en soit modifi&eacute;. Il a &eacute;t&eacute; popularis&eacute; dans les ann&eacute;es 1960 gr&acirc;ce &agrave; la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r&eacute;cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</span></p>', '2020-01-13 18:30:29', 'ian-schneider-TamMbr4okv4-unsplash.jpg', 0),
+(251, '', 'Le voyage c\'est super', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Le&nbsp;</span><strong style=\"margin: 0px; padding: 0px; font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Lorem Ipsum</strong><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">&nbsp;est simplement du faux texte employ&eacute; dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les ann&eacute;es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r&eacute;aliser un livre sp&eacute;cimen de polices de texte. Il n\'a pas fait que survivre cinq si&egrave;cles, mais s\'est aussi adapt&eacute; &agrave; la bureautique informatique, sans que son contenu n\'en soit modifi&eacute;. Il a &eacute;t&eacute; popularis&eacute; dans les ann&eacute;es 1960 gr&acirc;ce &agrave; la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r&eacute;cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</span></p>', '2020-01-13 18:30:48', 'patrick-perkins-3wylDrjxH-E-unsplash.jpg', 0),
+(252, '', 'Le voyage est bientôt fini', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Le&nbsp;</span><strong style=\"margin: 0px; padding: 0px; font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Lorem Ipsum</strong><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">&nbsp;est simplement du faux texte employ&eacute; dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les ann&eacute;es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r&eacute;aliser un livre sp&eacute;cimen de polices de texte. Il n\'a pas fait que survivre cinq si&egrave;cles, mais s\'est aussi adapt&eacute; &agrave; la bureautique informatique, sans que son contenu n\'en soit modifi&eacute;. Il a &eacute;t&eacute; popularis&eacute; dans les ann&eacute;es 1960 gr&acirc;ce &agrave; la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r&eacute;cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</span></p>', '2020-01-13 18:31:09', 'pawel-szvmanski-F85pIdl7cS8-unsplash.jpg', 0),
+(253, '', 'Retour à la maison ', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Le&nbsp;</span><strong style=\"margin: 0px; padding: 0px; font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Lorem Ipsum</strong><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">&nbsp;est simplement du faux texte employ&eacute; dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les ann&eacute;es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r&eacute;aliser un livre sp&eacute;cimen de polices de texte. Il n\'a pas fait que survivre cinq si&egrave;cles, mais s\'est aussi adapt&eacute; &agrave; la bureautique informatique, sans que son contenu n\'en soit modifi&eacute;. Il a &eacute;t&eacute; popularis&eacute; dans les ann&eacute;es 1960 gr&acirc;ce &agrave; la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r&eacute;cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</span></p>', '2020-01-13 18:31:29', 'ross-sokolovski-blA1ykU7vOM-unsplash.jpg', 0),
+(254, '', 'J\'ai hâte de repartir', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Le&nbsp;</span><strong style=\"margin: 0px; padding: 0px; font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Lorem Ipsum</strong><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">&nbsp;est simplement du faux texte employ&eacute; dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les ann&eacute;es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r&eacute;aliser un livre sp&eacute;cimen de polices de texte. Il n\'a pas fait que survivre cinq si&egrave;cles, mais s\'est aussi adapt&eacute; &agrave; la bureautique informatique, sans que son contenu n\'en soit modifi&eacute;. Il a &eacute;t&eacute; popularis&eacute; dans les ann&eacute;es 1960 gr&acirc;ce &agrave; la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r&eacute;cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</span></p>', '2020-01-13 18:31:49', 'salome-watel-51N2NTDDtLw-unsplash.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -89,15 +81,12 @@ CREATE TABLE `tag` (
 --
 
 INSERT INTO `tag` (`id`, `tag_name`) VALUES
-(78, 'ecole'),
-(79, ' mode'),
-(80, 'photo'),
-(81, 'design'),
-(82, 'mode'),
-(83, 'test'),
-(84, 'nouveau'),
-(85, 'super'),
-(86, 'oui');
+(92, 'ecrivain'),
+(93, ' lecture'),
+(94, 'voyage'),
+(95, ' voyage'),
+(96, ' ecriture'),
+(97, 'ecriture');
 
 -- --------------------------------------------------------
 
@@ -115,7 +104,15 @@ CREATE TABLE `TagsPost` (
 --
 
 INSERT INTO `TagsPost` (`IdPost`, `IdTag`) VALUES
-(245, 86);
+(249, 92),
+(249, 93),
+(250, 92),
+(251, 94),
+(252, 92),
+(252, 95),
+(253, 94),
+(253, 96),
+(254, 97);
 
 -- --------------------------------------------------------
 
@@ -135,8 +132,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `mail`, `password`) VALUES
-(4, 'admin', 'admin@michel-smith.com', '*4ACFE3202A5FF5CF467898FC58AAB1D615029441'),
-(5, 'test', 'test@test.com', '*94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29');
+(4, 'admin', 'admin@michel-smith.com', '*4ACFE3202A5FF5CF467898FC58AAB1D615029441');
 
 --
 -- Index pour les tables déchargées
@@ -182,25 +178,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
 
 --
 -- AUTO_INCREMENT pour la table `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
